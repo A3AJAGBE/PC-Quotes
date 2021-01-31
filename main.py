@@ -12,6 +12,7 @@ dblink = 'mysql+pymysql://{0}:{1}@{2}/{3}'.format(
     dbinfo.user, dbinfo.password, dbinfo.host, dbinfo.database)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = dblink
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Instantiate marshmallow
@@ -27,6 +28,16 @@ class Quotes(db.Model):
     def __repr__(self):
         return f"Quote: {self.quote}"
 
+
+# Marshmallow schema based on model
+class QuotesSchema(ma.Schema):
+    class Meta:
+        # Field to expose
+        fields = ["quote"]
+        model = Quotes
+
+
+quotes_schema = QuotesSchema()
 
 # TODO: Remove debug in production
 if __name__ == '__main__':
