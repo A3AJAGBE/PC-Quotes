@@ -2,6 +2,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import dbinfo
+from flask_marshmallow import Marshmallow
 
 # Create an instance of flask
 app = Flask(__name__)
@@ -12,6 +13,10 @@ dblink = 'mysql+pymysql://{0}:{1}@{2}/{3}'.format(
 
 app.config['SQLALCHEMY_DATABASE_URI'] = dblink
 db = SQLAlchemy(app)
+
+# Instantiate marshmallow
+"""This is used to parse post objects into a JSON response."""
+ma = Marshmallow(app)
 
 
 # Database model - Creating a Quotes table
