@@ -60,6 +60,13 @@ class QuoteResource(Resource):
         db.session.commit()
         return quote_schema.dump(new_quote)
 
+    def delete(self, id):
+        """This functions deletes a quote in the database."""
+        quote = Quotes.query.get_or_404(id)
+        db.session.delete(quote)
+        db.session.commit()
+        return '', 204
+
 
 # Register resource and define endpoint
 api.add_resource(QuoteResource, '/quotes/<int:id>')
