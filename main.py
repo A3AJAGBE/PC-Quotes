@@ -42,15 +42,14 @@ class QuotesSchema(ma.Schema):
 
 
 quote_schema = QuotesSchema()
-quotes_schema = QuotesSchema(many=True)
 
 
 # Restful resource
 class QuoteResource(Resource):
-    def get(self):
+    def get(self, id):
         """This function returns all quotes in the database."""
-        quotes = Quotes.query.all()
-        return quotes_schema.dump(quotes)
+        quote = Quotes.query.get_or_404(id)
+        return quote_schema.dump(quote)
 
     def post(self):
         """This functions add a new quote to the database."""
@@ -63,7 +62,7 @@ class QuoteResource(Resource):
 
 
 # Register resource and define endpoint
-api.add_resource(QuoteResource, '/quotes')
+api.add_resource(QuoteResource, '/quotes/<int:id>')
 
 # TODO: Remove debug in production
 if __name__ == '__main__':
