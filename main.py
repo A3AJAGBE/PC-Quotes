@@ -3,6 +3,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import dbinfo
 from flask_marshmallow import Marshmallow
+from flask_restful import Api, Resource
 
 # Create an instance of flask
 app = Flask(__name__)
@@ -18,6 +19,9 @@ db = SQLAlchemy(app)
 # Instantiate marshmallow
 """This is used to parse post objects into a JSON response."""
 ma = Marshmallow(app)
+
+# Instantiate flask_restful
+api = Api(app)
 
 
 # Database model - Creating a Quotes table
@@ -37,7 +41,20 @@ class QuotesSchema(ma.Schema):
         model = Quotes
 
 
-quotes_schema = QuotesSchema()
+quote_schema = QuotesSchema()
+quotes_schema = QuotesSchema(many=True)
+
+
+# Restful resource
+class QuoteResource(Resource):
+    def get(self):
+        """This function returns all quotes in the database."""
+        quotes = Quotes.query.all()
+        return quotes_schema.dump(quotes)
+
+
+# Register resource and define endpoint
+api.add_resource(QuoteResource, '/quotes')
 
 # TODO: Remove debug in production
 if __name__ == '__main__':
