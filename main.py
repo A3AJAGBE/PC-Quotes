@@ -1,5 +1,5 @@
 # Imports
-from flask import Flask
+from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 import dbinfo
 from flask_marshmallow import Marshmallow
@@ -51,6 +51,15 @@ class QuoteResource(Resource):
         """This function returns all quotes in the database."""
         quotes = Quotes.query.all()
         return quotes_schema.dump(quotes)
+
+    def post(self):
+        """This functions add a new quote to the database."""
+        new_quote = Quotes(
+            quote=request.json['quote']
+        )
+        db.session.add(new_quote)
+        db.session.commit()
+        return quote_schema.dump(new_quote)
 
 
 # Register resource and define endpoint
