@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 import dbinfo
 from flask_marshmallow import Marshmallow
 from flask_restful import Api, Resource
+import random
 
 # Create an instance of flask
 app = Flask(__name__)
@@ -42,14 +43,18 @@ class QuotesSchema(ma.Schema):
 
 
 quote_schema = QuotesSchema()
+quotes_schema = QuotesSchema(many=True)
 
 
 # Restful resource
 class QuoteResource(Resource):
-    def get(self, id):
+    def get(self):
         """This function returns all quotes in the database."""
-        quote = Quotes.query.get_or_404(id)
-        return quote_schema.dump(quote)
+        # quote = Quotes.query.get_or_404(id)
+        # return quote_schema.dump(quote)
+        quotes = Quotes.query.all()
+        quote = random.choice(quotes_schema.dump(quotes))
+        return quote
 
     def post(self):
         """This functions add a new quote to the database."""
@@ -69,7 +74,8 @@ class QuoteResource(Resource):
 
 
 # Register resource and define endpoint
-api.add_resource(QuoteResource, '/quotes/<int:id>')
+# api.add_resource(QuoteResource, '/quotes/<int:id>')
+api.add_resource(QuoteResource, '/quotes/')
 
 # TODO: Remove debug in production
 if __name__ == '__main__':
