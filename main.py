@@ -25,6 +25,12 @@ ma = Marshmallow(app)
 api = Api(app)
 
 
+# Add an home page
+@app.route('/')
+def home():
+    return "Hello, world"
+
+
 # Database model - Creating a Quotes table
 class Quotes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -49,7 +55,7 @@ quotes_schema = QuotesSchema(many=True)
 # Restful resource
 class QuoteResource(Resource):
     def get(self):
-        """This function returns all quotes in the database."""
+        """This function returns a random quote in the database."""
         # quote = Quotes.query.get_or_404(id)
         # return quote_schema.dump(quote)
         quotes = Quotes.query.all()
@@ -75,7 +81,7 @@ class QuoteResource(Resource):
 
 # Register resource and define endpoint
 # api.add_resource(QuoteResource, '/quotes/<int:id>')
-api.add_resource(QuoteResource, '/quotes/')
+api.add_resource(QuoteResource, '/quotes/api/v1.0/')
 
 # TODO: Remove debug in production
 if __name__ == '__main__':
