@@ -1,1 +1,1 @@
-web: gunicorn main:PC-Quotes
+web: gunicorn main:app
