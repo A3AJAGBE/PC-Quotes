@@ -1,21 +1,17 @@
 # Imports
 from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
-import dbinfo
 from flask_marshmallow import Marshmallow
 from flask_restful import Api, Resource
+from config import Config
+from flask_migrate import Migrate
 import random
 
 # Create an instance of flask
 app = Flask(__name__)
-
-# Database setup
-dblink = 'mysql+pymysql://{0}:{1}@{2}/{3}'.format(
-    dbinfo.user, dbinfo.password, dbinfo.host, dbinfo.database)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = dblink
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config.from_object(Config)
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 # Instantiate marshmallow
 """This is used to parse post objects into a JSON response."""
@@ -80,6 +76,5 @@ class QuoteResource(Resource):
 # Register resource and define endpoint
 api.add_resource(QuoteResource, '/quotes/api/v1.0/')
 
-# TODO: Remove debug in production
 if __name__ == '__main__':
     app.run()
