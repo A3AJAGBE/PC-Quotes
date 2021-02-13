@@ -1,5 +1,5 @@
 # Imports
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 import dbinfo
 from flask_marshmallow import Marshmallow
@@ -28,7 +28,7 @@ api = Api(app)
 # Add an home page
 @app.route('/')
 def home():
-    return "Hello, world"
+    return render_template('index.html', title='Home')
 
 
 # Database model - Creating a Quotes table
@@ -56,8 +56,6 @@ quotes_schema = QuotesSchema(many=True)
 class QuoteResource(Resource):
     def get(self):
         """This function returns a random quote in the database."""
-        # quote = Quotes.query.get_or_404(id)
-        # return quote_schema.dump(quote)
         quotes = Quotes.query.all()
         quote = random.choice(quotes_schema.dump(quotes))
         return quote
@@ -80,9 +78,8 @@ class QuoteResource(Resource):
 
 
 # Register resource and define endpoint
-# api.add_resource(QuoteResource, '/quotes/<int:id>')
 api.add_resource(QuoteResource, '/quotes/api/v1.0/')
 
 # TODO: Remove debug in production
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
