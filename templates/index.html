@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PC Quotes</title>
+
+    <style>
+    .btn {
+      background-color: #ddd;
+      color: black;
+      border: none;
+      padding: 16px 32px;
+      text-align: center;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition: 0.3s;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #3e8e41;
+      color: white;
+    }
+    </style>
 </head>
 <body>
     <h1>Quotes by Priyanka Chopra Jonas.</h1>
+
+    <h4>The total number of quotes available: {{quotes}}</h4>
+
+    <p>The quotes are randomized. Keep refreshing to get a different quote</p>
+
+    <a href="http://127.0.0.1:5000/quotes/api/v1.0/" target="_blank"><button class="btn">Get a quote</button></a>
+
+    <h3>Random Quote: "{{quote.quote}}"</h3>
+
+    <a href='https://twitter.com/intent/tweet?text="{{quote.quote}}"-@priyankachopra via http://pc-quotes-api.herokuapp.com @A3AJAGBE' target="_blank">TWEET</a>
 </body>
 </html>
