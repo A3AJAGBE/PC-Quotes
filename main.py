@@ -24,7 +24,10 @@ api = Api(app)
 # Add an home page
 @app.route('/')
 def home():
-    return render_template('index.html', title='Home')
+    quotes_count = Quotes.query.count()
+    quotes = Quotes.query.all()
+    quote = random.choice(quotes)
+    return render_template('index.html', title='Home', quotes=quotes_count, quote=quote)
 
 
 # Database model - Creating a Quotes table
