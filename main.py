@@ -77,7 +77,7 @@ class QuoteResource(Resource):
 
 
 # Register resource and define endpoint
-api.add_resource(QuoteResource, '/quotes/api/v1.0/')
+api.add_resource(QuoteResource, '/quotes/v1.0/')
 
 if __name__ == '__main__':
     app.run()
