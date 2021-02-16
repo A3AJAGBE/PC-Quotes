@@ -16,7 +16,7 @@ a {
 }
 
 a:hover {
-    color: #3d3d5c;
+    color: #0059b3
 }
 
 .usage {
@@ -63,15 +63,19 @@ a:hover {
   outline: 0;
   display: inline-block;
   padding: 8px;
-  color: white;
   background-color: #000;
+  color: #3399ff;
   text-align: center;
-  cursor: pointer;
   width: 100%;
+  margin: 16px 0;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
 }
 
 .button:hover {
-  background-color: #555;
+    background-color: #3399ff;
+    color: white;
 }
 
 footer {
