@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #e6e6e6;
+  margin: 0 auto;
+  width: 80vw;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #3399ff;
+}
+
+a:hover {
+    color: #3d3d5c;
+}
+
+.usage {
+    border: 2px black solid;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* Three columns side by side */
+.column {
+  float: left;
+  width: 50%;
+  margin: 16px auto;
+  padding: 0 8px;
+}
+
+.quote_title {
+  color: grey;
+}
+
+/* Add some shadows to create a card effect */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card img{
+  width: 100%;
+}
+
+/* Some left and right padding inside the container */
+.container {
+  padding: 0 16px;
+}
+
+/* Clear floats */
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+footer {
+    margin: 15px;
+    text-align: center;
+}
+
+/* Display the columns below each other instead of side by side on small screens */
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
