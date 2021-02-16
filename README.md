@@ -1,5 +1,5 @@
 # PC-Quotes
-This is a restful API for quotes by Priyanka Chopra Jonas. 
+This is a restful API for quotes said by Priyanka Chopra Jonas. 
 
 ## Usage
 ```
