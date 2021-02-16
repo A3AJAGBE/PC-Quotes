@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An api based on quotes said by priyanka chopra jonas.">
+    <meta name="author" content="Aminat Ajagbe, A3AJAGBE">
+    <meta name="keywords" content="priyanka chopra jonas, api, quotes, restful api, pc, pcj">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>PC Quotes</title>
-
-    <style>
-    .btn {
-      background-color: #ddd;
-      color: black;
-      border: none;
-      padding: 16px 32px;
-      text-align: center;
-      font-size: 16px;
-      margin: 4px 2px;
-      transition: 0.3s;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background-color: #3e8e41;
-      color: white;
-    }
-    </style>
 </head>
 <body>
-    <h1>Quotes by Priyanka Chopra Jonas.</h1>
 
-    <h4>The total number of quotes available: {{quotes}}</h4>
+    <h1>Quotes by PCJ</h1>
+
+    <hr>
+
+    <h3 align="center"><i>This is a restful API for quotes by Priyanka Chopra Jonas.</i></h3>
+
+    <h2>The total number of quotes available: {{quotes}}</h2>
 
     <p>The quotes are randomized. Keep refreshing to get a different quote</p>
 
-    <a href="http://127.0.0.1:5000/quotes/api/v1.0/" target="_blank"><button class="btn">Get a quote</button></a>
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <img src="/static/image/pc.webp" alt="priyanka chopra image">
+                <div class="container">
+                    <h2 class="quote_title">Random Quote</h2>
+                    <h4>❝{{quote.quote}}❞</h4>
+                    <p><button class="button">
+                        <a href='https://twitter.com/intent/tweet?text="{{quote.quote}}"-@priyankachopra via http://pc-quotes-api.herokuapp.com @A3AJAGBE' target="_blank">TWEET THE QUOTE</a>
+                    </button></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <h3>Random Quote: "{{quote.quote}}"</h3>
+    <div class="usage">
+        <h2>API USAGE</h2>
 
-    <a href='https://twitter.com/intent/tweet?text="{{quote.quote}}"-@priyankachopra via http://pc-quotes-api.herokuapp.com @A3AJAGBE' target="_blank">TWEET</a>
+        <h4>GET
+            <a href="https://pc-quotes-api.herokuapp.com/quotes/v1.0/" target="_blank">https://pc-quotes-api.herokuapp.com/quotes/v1.0/</a>
+        </h4>
+
+        <h3>The code is available on <a href="https://github.com/A3AJAGBE/PC-Quotes">GitHub</a>.</h3>
+    </div>
+
+    <footer>
+        <p>Hey 👋🏽, <a href="https://twitter.com/A3AJAGBE">A3AJAGBE</a> made it.</p>
+        <p>2021.</p>
+    </footer>
+
 </body>
 </html>
