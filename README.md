@@ -12,3 +12,6 @@ GET https://pc-quotes-api.herokuapp.com/quotes/v1.0/
     "quote": "Don’t try to squeeze into a glass slipper. Instead, shatter the glass ceiling."
 }
 ```
+
+#### Sample Project
+So I created a basic GUI application with this API. [Check it out](https://github.com/A3AJAGBE/PCJ-Quotes-GUI)
