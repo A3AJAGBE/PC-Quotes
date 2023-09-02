@@ -1,9 +1,9 @@
 # PC-Quotes
-This is a restful API for quotes said by Priyanka Chopra Jonas. 
+This is a restful API for quotes, said by Priyanka Chopra Jonas. 
 
 ## Usage
 ```
-GET https://pc-quotes-api.herokuapp.com/quotes/v1.0/
+GET https://pc-quotes-api.up.railway.app/quotes/v1.0/ 
 ```
 
 ### Random Quote
@@ -14,4 +14,4 @@ GET https://pc-quotes-api.herokuapp.com/quotes/v1.0/
 ```
 
 #### Sample Project
-So I created a basic GUI application with this API. [Check it out](https://github.com/A3AJAGBE/PCJ-Quotes-GUI)
+So, I created a basic GUI application with this API. [Check it out](https://github.com/A3AJAGBE/PCJ-Quotes-GUI)
